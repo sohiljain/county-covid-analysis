@@ -39,7 +39,7 @@ class MyTestCase(unittest.TestCase):
 
     def no_mapping(self):
         """
-        When we find no mapping, estimated cases and rate values are null
+        When we find no mapping for counties or no mapping because respective dates are missing, then estimated cases and rate values are null
         :return:
         """
         input = 'http://127.0.0.1:5002/covid/00711?start=2020-06-21&end=2020-06-24'
@@ -50,6 +50,7 @@ class MyTestCase(unittest.TestCase):
         ''')
 
         self.assertEqual(sorted(output.items()) == sorted(expected.items()), True)
+
 
     def multiple_counties_zip(self):
         """
