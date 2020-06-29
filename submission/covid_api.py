@@ -100,6 +100,8 @@ class Covid_Rate(Resource):
                 result = [dict(zip(tuple(query.keys()), i)) for i in query.cursor]
                 print(result)
                 if len(result) == 0:
+                    estimated_cases = None
+                    rate = None
                     continue
                 counties.append(result[0])
 
@@ -119,4 +121,4 @@ class Covid_Rate(Resource):
 api.add_resource(Covid_Rate, '/covid/<zip_code>')
 
 if __name__ == '__main__':
-    app.run(port='5002')
+    app.run(host='0.0.0.0', port='5002')

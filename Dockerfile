@@ -8,6 +8,7 @@ RUN apt-get update
 RUN pip install pipenv
 RUN pipenv install --skip-lock
 ENV PYTHONPATH ${PYTONPATH}:/submission
-RUN chmod -R 777 /submission/
+RUN chmod -R 755 /submission/
 EXPOSE 5002
-CMD pipenv run python /submission/covid_api.py
+
+ENTRYPOINT /submission/run.sh

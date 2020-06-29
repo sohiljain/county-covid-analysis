@@ -95,7 +95,7 @@ if __name__ == '__main__':
     insert or replace into covid
     select distinct a.fips,
       a.cases,
-      cast(a.cases*10000/b.population as float)/100 as rate,
+      cast(a.cases*10000/b.population_2019 as float)/100 as rate,
       a.dt,
       a.county
     from covid_count_tmp a left join county_population b

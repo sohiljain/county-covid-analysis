@@ -7,6 +7,6 @@ CONTAINER="covid_api"
 echo "Starting Container $CONTAINER"
 
 docker rm -vf $CONTAINER
-docker build --rm=False -t $CONTAINER .
-docker run  -t -v ${PWD}/submission/:/submission/ -p 5002:5002 --name $CONTAINER $CONTAINER "$@"
+docker build -t $CONTAINER .
+docker run  -t -v ${PWD}/submission/:/submission/ -e "param=$1" -p 5002:5002 --name $CONTAINER $CONTAINER
 

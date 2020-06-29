@@ -10,13 +10,14 @@ We have an etl script which loads data every day and an exposed api that provide
 
 ## Running Instructions -
 #### Running ETL for current load
+`bash docker_start.sh etl.py` or
 `python etl.py`
 
 #### Running ETL for historical load
-`python etl.py history`
+` bash docker_start.sh "etl.py history"` or `python etl.py history`
 
 #### Running api
-`python covid_api.py `
+` bash docker_start.sh covid_api.py` or `python covid_api.py `
 
 ## Test cases
 #### Test Case 1 - one_to_one_mapping:
@@ -26,7 +27,7 @@ We have an etl script which loads data every day and an exposed api that provide
     We find no match to county mapping and cannot find the populatin and therefore rate is null. Zip belongs to only one county. Observe that esitmated cases is
     less than cases in counties because it is divided by number of zipcodes in the county to estimte zipcode level data
 #### Test Case 3 - no_mapping:
-    When we find no mapping, estimated cases and rate values are null
+    When we find no mapping for counties or no mapping because respective dates are missing, then estimated cases and rate values are null
 #### Test Case 4 - multiple_counties_zip:
     When we find a zip lies in multiple counties, we multiply and sum over the tot_ration to get estimated counts
 
